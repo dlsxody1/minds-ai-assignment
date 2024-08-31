@@ -13,17 +13,16 @@ const TaskContainer = () => {
 
   useEffect(() => {
     const storedTodos = localStorageManager.get("todo");
-    if (storedTodos && storedTodos.length > 0) {
+    if (storedTodos && storedTodos.length < 0) {
       setTodos(storedTodos);
     } else {
       const fetchData = async () => {
         const todoData = await getTodo();
         setTodos(todoData);
-        localStorageManager.set("todo", todoData);
       };
       fetchData();
     }
-  }, [todos]);
+  }, []);
 
   const toggleCompleted = (id: number) => {
     setTodos((prevTodos) =>
@@ -42,7 +41,7 @@ const TaskContainer = () => {
             onChange={() => toggleCompleted(id)}
           />
           <Task completed={completed} title={title} />
-          <DeleteButton />
+          <DeleteButton todoId={id} />
         </TaskItem>
       ))}
     </TaskContainerComponent>
