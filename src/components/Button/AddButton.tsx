@@ -1,7 +1,14 @@
 import { styled } from "styled-components";
 
-const AddButton = () => {
-  return <AddButtonComponent>Add</AddButtonComponent>;
+const AddButton = ({ inputData }: { inputData: string }) => {
+  const addTodo = () => {
+    console.log(inputData, "input");
+  };
+  return (
+    <AddButtonComponent onClick={addTodo} type="button">
+      Add
+    </AddButtonComponent>
+  );
 };
 
 export default AddButton;

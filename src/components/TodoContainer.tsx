@@ -1,17 +1,14 @@
 import { styled } from "styled-components";
-import Input from "./Input/Input";
-import AddButton from "./Button/AddButton";
+
 import TaskContainer from "./Task/TaskContainer";
+import InputContainer from "./Input/InputContainer";
 
 const TodoContainer = () => {
   return (
     <Container>
       <ToDoListContainer>
         <Title>To-Do List</Title>
-        <InputContainer>
-          <Input />
-          <AddButton />
-        </InputContainer>
+        <InputContainer></InputContainer>
         <TaskContainer />
       </ToDoListContainer>
     </Container>
@@ -39,9 +36,4 @@ const Title = styled.h1`
   font-size: 1.5em;
   margin-bottom: 20px;
   color: black;
-`;
-
-const InputContainer = styled.div`
-  display: flex;
-  margin-bottom: 20px;
 `;
