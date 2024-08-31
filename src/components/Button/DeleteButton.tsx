@@ -11,13 +11,13 @@ interface DeleteButtonProps {
 const DeleteButton = ({ todoId, setInitTodo }: DeleteButtonProps) => {
   const localStorageManager = new LocalStorageManager();
   const todoManager = new TodoManager();
-  const onClickHandler = () => {
+  const deleteTodo = () => {
     todoManager.delete(todoId, localStorageManager);
     setInitTodo((prevTodos) => prevTodos.filter((todo) => todo.id !== todoId));
   };
 
   return (
-    <DeleteButtonComponent onClick={() => onClickHandler()}>
+    <DeleteButtonComponent onClick={() => deleteTodo()}>
       🗑
     </DeleteButtonComponent>
   );
