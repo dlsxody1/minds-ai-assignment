@@ -5,17 +5,25 @@ import DeleteButton from "../Button/DeleteButton";
 import Task from "./Task";
 import { getTodo } from "../../api/api";
 import { TodoTypes } from "../../types/TodoTypes";
+import { LocalStorageManager } from "../../util/localStorageManager";
 
 const TaskContainer = () => {
   const [todos, setTodos] = useState<TodoTypes[]>([]);
+  const localStorageManager = new LocalStorageManager();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const todoData = await getTodo();
-      setTodos(todoData);
-    };
-    fetchData();
-  }, []);
+    const storedTodos = localStorageManager.get("todo");
+    if (storedTodos && storedTodos.length > 0) {
+      setTodos(storedTodos);
+    } else {
+      const fetchData = async () => {
+        const todoData = await getTodo();
+        setTodos(todoData);
+        localStorageManager.set("todo", todoData);
+      };
+      fetchData();
+    }
+  }, [todos]);
 
   const toggleCompleted = (id: number) => {
     setTodos((prevTodos) =>

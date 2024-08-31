@@ -7,7 +7,7 @@ const InputContainer = () => {
   const [inputData, setInputData] = useState("");
 
   return (
-    <InputContainerComponent>
+    <InputContainerComponent onSubmit={(e) => e.preventDefault()}>
       <Input setInputData={setInputData} />
       <AddButton inputData={inputData} />
     </InputContainerComponent>

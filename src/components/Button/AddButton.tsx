@@ -1,8 +1,20 @@
 import { styled } from "styled-components";
+import { LocalStorageManager } from "../../util/localStorageManager";
+import { TodoTypes } from "../../types/TodoTypes";
 
 const AddButton = ({ inputData }: { inputData: string }) => {
+  const localStorageManager = new LocalStorageManager();
   const addTodo = () => {
-    console.log(inputData, "input");
+    const todos = localStorageManager.get("todo") || [];
+    const newId = todos.length > 0 ? todos[todos.length - 1].id + 1 : 1;
+    const newTodo: TodoTypes = {
+      userId: 1,
+      id: newId,
+      title: inputData,
+      completed: false,
+    };
+    const updatedTodos = [...todos, newTodo];
+    localStorageManager.set("todo", updatedTodos);
   };
   return (
     <AddButtonComponent onClick={addTodo} type="button">

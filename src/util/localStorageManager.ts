@@ -1,5 +1,7 @@
+import { TodoTypes } from "../types/TodoTypes";
+
 export class LocalStorageManager {
-  set(key: string, value: string) {
+  set(key: string, value: TodoTypes[]) {
     try {
       const serializedValue = JSON.stringify(value);
       localStorage.setItem(key, serializedValue);
