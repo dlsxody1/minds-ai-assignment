@@ -1,50 +1,68 @@
-# React + TypeScript + Vite
+# 마인즈 에이아이 과제
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 과제 링크
 
-Currently, two official plugins are available:
+추가 예정.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 요구사항
 
-## Expanding the ESLint configuration
+Todo 리스트를 구현한다.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. 외부 API에서 초기 To-Do 리스트 데이터를 가져오는 기능
 
-- Configure the top-level `parserOptions` property like this:
+   - API 정보: GET https://jsonplaceholder.typicode.com/todos?_limit=5
+   - 페이지가 로드될 때 이 API를 사용하여 초기 To-Do 리스트 데이터를 가져오세요.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+2. 할 일을 추가하는 기능
+
+   - 사용자가 새로운 할 일을 입력하고 추가할 수 있는 기능을 구현하세요.
+
+3. 할 일을 완료 처리하는 기능
+
+   - 사용자가 할 일 항목을 클릭하여 완료 상태로 변경할 수 있는 기능을 구현하세요.
+
+4. 할 일을 삭제하는 기능
+
+   - 사용자가 특정 할 일 항목을 삭제할 수 있는 기능을 구현하세요.
+
+5. 로컬 스토리지를 사용하여 데이터를 저장하고 앱이 다시 로드될 때 데이터를 불러오는 기능
+
+   - 사용자가 추가, 수정, 삭제한 데이터가 로컬 스토리지에 저장되고, 페이지가 다시 로드될 때 저장된 데이터를 불러올 수 있도록 하세요.
+
+6. 기본적인 CSS-in-JS 스타일링
+   - CSS-in-JS 방식을 사용하여 앱의 스타일을 구현하세요.
+
+<br />
+
+### 설치 방법
+
+#### 레포지토리 복사
+
+```git
+git clone https://github.com/dlsxody1/minds-ai-assignment.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+#### 폴더로 이동
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+cd /minds-ai-assignment
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+#### 의존성 설치
+
+```npm
+npm install
+```
+
+#### 환경변수 주입
+
+```bash
+루트에 .env 를 만듭니다.
+VITE_API = 위의 API를 적습니다.
+```
+
+### 프로젝트 시작
+
+```bash
+npm run dev
 ```
