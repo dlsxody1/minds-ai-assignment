@@ -1,7 +1,19 @@
+import { ChangeEvent, Dispatch } from "react";
 import { styled } from "styled-components";
 
-const Input = () => {
-  return <InputComponent />;
+interface InputProps {
+  inputData: string;
+  setInputData: Dispatch<React.SetStateAction<string>>;
+}
+const Input = ({ inputData, setInputData }: InputProps) => {
+  const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setInputData(value);
+  };
+
+  return (
+    <InputComponent onChange={(e) => onChangeInput(e)} value={inputData} />
+  );
 };
 
 export default Input;

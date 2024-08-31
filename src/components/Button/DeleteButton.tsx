@@ -1,7 +1,26 @@
 import { styled } from "styled-components";
+import { LocalStorageManager } from "../../util/localStorageManager";
+import { TodoManager } from "../../util/TodoManager";
+import { TodoTypes } from "../../types/TodoTypes";
+import { Dispatch } from "react";
 
-const DeleteButton = () => {
-  return <DeleteButtonComponent>🗑</DeleteButtonComponent>;
+interface DeleteButtonProps {
+  todoId: number;
+  setInitTodo: Dispatch<React.SetStateAction<TodoTypes[]>>;
+}
+const DeleteButton = ({ todoId, setInitTodo }: DeleteButtonProps) => {
+  const localStorageManager = new LocalStorageManager();
+  const todoManager = new TodoManager();
+  const deleteTodo = () => {
+    todoManager.delete(todoId, localStorageManager);
+    setInitTodo((prevTodos) => prevTodos.filter((todo) => todo.id !== todoId));
+  };
+
+  return (
+    <DeleteButtonComponent onClick={() => deleteTodo()}>
+      🗑
+    </DeleteButtonComponent>
+  );
 };
 
 export default DeleteButton;
