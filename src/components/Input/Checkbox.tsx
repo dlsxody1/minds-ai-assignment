@@ -1,7 +1,13 @@
 import { styled } from "styled-components";
 
-const Checkbox = () => {
-  return <CheckboxComponent />;
+const Checkbox = ({
+  completed,
+  onChange,
+}: {
+  completed: boolean;
+  onChange: () => void;
+}) => {
+  return <CheckboxComponent onChange={onChange} checked={completed} />;
 };
 
 export default Checkbox;
