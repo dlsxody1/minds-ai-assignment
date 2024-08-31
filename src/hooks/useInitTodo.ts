@@ -9,6 +9,7 @@ export const useInitTodo = () => {
   useEffect(() => {
     const localStorageManager = new LocalStorageManager();
     const storedTodos = localStorageManager.get("todo");
+
     if (!storedTodos) {
       const fetchData = async () => {
         const todoData = await getTodo();
@@ -16,6 +17,7 @@ export const useInitTodo = () => {
         localStorageManager.set("todo", todoData);
       };
       fetchData();
+      console.log(storedTodos, "init");
     } else {
       setInitTodo(storedTodos);
     }

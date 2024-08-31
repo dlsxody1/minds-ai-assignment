@@ -2,15 +2,19 @@ import { styled } from "styled-components";
 import Checkbox from "../Input/Checkbox";
 import DeleteButton from "../Button/DeleteButton";
 import Task from "./Task";
-import { useInitTodo } from "../../hooks/useInitTodo";
+import { TodoTypes } from "../../types/TodoTypes";
+import { Dispatch } from "react";
 
-const TaskContainer = () => {
-  const { initTodo, setInitTodo } = useInitTodo();
+interface TaskContainerTypes {
+  initTodo: TodoTypes[];
+  setInitTodo: Dispatch<React.SetStateAction<TodoTypes[]>>;
+}
 
+const TaskContainer = ({ initTodo, setInitTodo }: TaskContainerTypes) => {
   return (
     <>
       <TaskContainerComponent>
-        {initTodo.map(({ completed, id, title }) => (
+        {initTodo?.map(({ completed, id, title }) => (
           <TaskItem key={id}>
             <Checkbox
               todoId={id}
@@ -18,7 +22,7 @@ const TaskContainer = () => {
               setInitTodo={setInitTodo}
             />
             <Task completed={completed} title={title} />
-            <DeleteButton todoId={id} />
+            <DeleteButton todoId={id} setInitTodo={setInitTodo} />
           </TaskItem>
         ))}
       </TaskContainerComponent>
