@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import { LocalStorageManager } from "../../util/localStorageManager";
-import { TodoManager } from "../../util/TodoManager";
 import { Dispatch } from "react";
 import { TodoProps } from "../../types/TodoProps";
 
@@ -8,34 +7,18 @@ interface AddButtonProps {
   inputData: string;
   setInitTodo: Dispatch<React.SetStateAction<TodoProps[]>>;
   setInputData: Dispatch<React.SetStateAction<string>>;
+  addTodo: (inputData: string, storage: LocalStorageManager) => void;
 }
 
-const AddButton = ({
-  inputData,
-  setInitTodo,
-  setInputData,
-}: AddButtonProps) => {
+const AddButton = ({ inputData, setInputData, addTodo }: AddButtonProps) => {
   const localStorageManager = new LocalStorageManager();
-  const todoManager = new TodoManager();
-  const addTodo = () => {
-    todoManager.add(inputData, localStorageManager);
-    setInitTodo((prevTodos) => {
-      const newId =
-        prevTodos.length > 0 ? prevTodos[prevTodos.length - 1].id + 1 : 1;
-      const newTodo: TodoProps = {
-        userId: 1,
-        id: newId,
-        title: inputData,
-        completed: false,
-      };
-      const updatedTodos = [...prevTodos, newTodo];
-      return updatedTodos;
-    });
+  const handleAddTodo = () => {
+    addTodo(inputData, localStorageManager);
     setInputData("");
   };
 
   return (
-    <AddButtonComponent onClick={() => addTodo()} type="submit">
+    <AddButtonComponent onClick={() => handleAddTodo()} type="submit">
       Add
     </AddButtonComponent>
   );

@@ -23,5 +23,22 @@ export const useInitTodo = () => {
     }
   }, []);
 
-  return { initTodo, setInitTodo };
+  const addTodo = (inputData: string, storage: LocalStorageManager) => {
+    const todos = storage.get("todo") || [];
+    const newId = todos.length > 0 ? todos[todos.length - 1].id + 1 : 1;
+    const newTodo: TodoProps = {
+      userId: 1,
+      id: newId,
+      title: inputData,
+      completed: false,
+    };
+    setInitTodo((prevTodos) => {
+      const updatedTodos = [...prevTodos, newTodo];
+      return updatedTodos;
+    });
+    const updatedTodos = [...todos, newTodo];
+    storage.set("todo", updatedTodos);
+  };
+
+  return { initTodo, setInitTodo, addTodo };
 };
