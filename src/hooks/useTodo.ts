@@ -17,7 +17,6 @@ export const useTodo = () => {
         localStorageManager.set("todo", todoData);
       };
       fetchData();
-      console.log(storedTodos, "init");
     } else {
       setInitTodo(storedTodos);
     }
