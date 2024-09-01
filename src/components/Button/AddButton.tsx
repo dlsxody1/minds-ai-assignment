@@ -1,11 +1,9 @@
 import { styled } from "styled-components";
 import { LocalStorageManager } from "../../util/localStorageManager";
 import { Dispatch } from "react";
-import { TodoProps } from "../../types/TodoProps";
 
 interface AddButtonProps {
   inputData: string;
-  setInitTodo: Dispatch<React.SetStateAction<TodoProps[]>>;
   setInputData: Dispatch<React.SetStateAction<string>>;
   addTodo: (inputData: string, storage: LocalStorageManager) => void;
 }

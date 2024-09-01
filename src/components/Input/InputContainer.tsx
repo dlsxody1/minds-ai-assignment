@@ -1,16 +1,14 @@
 import { styled } from "styled-components";
 import Input from "./Input";
 import AddButton from "../Button/AddButton";
-import { Dispatch, FormEvent, useState } from "react";
-import { TodoProps } from "../../types/TodoProps";
 import { LocalStorageManager } from "../../util/localStorageManager";
+import { FormEvent, useState } from "react";
 
 interface InputContainerProps {
-  setInitTodo: Dispatch<React.SetStateAction<TodoProps[]>>;
   addTodo: (inputData: string, storage: LocalStorageManager) => void;
 }
 
-const InputContainer = ({ setInitTodo, addTodo }: InputContainerProps) => {
+const InputContainer = ({ addTodo }: InputContainerProps) => {
   const [inputData, setInputData] = useState("");
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -23,7 +21,6 @@ const InputContainer = ({ setInitTodo, addTodo }: InputContainerProps) => {
       <AddButton
         addTodo={addTodo}
         inputData={inputData}
-        setInitTodo={setInitTodo}
         setInputData={setInputData}
       />
     </InputContainerComponent>

@@ -9,10 +9,7 @@ const TodoContainer = () => {
     <Container>
       <ToDoListContainer>
         <Title>To-Do List</Title>
-        <InputContainer
-          addTodo={addTodo}
-          setInitTodo={setInitTodo}
-        ></InputContainer>
+        <InputContainer addTodo={addTodo}></InputContainer>
         <TaskContainer initTodo={initTodo} setInitTodo={setInitTodo} />
       </ToDoListContainer>
     </Container>
