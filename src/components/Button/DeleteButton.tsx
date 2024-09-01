@@ -1,12 +1,12 @@
 import { styled } from "styled-components";
 import { LocalStorageManager } from "../../util/localStorageManager";
 import { TodoManager } from "../../util/TodoManager";
-import { TodoTypes } from "../../types/TodoTypes";
+import { TodoProps } from "../../types/TodoProps";
 import { Dispatch } from "react";
 
 interface DeleteButtonProps {
   todoId: number;
-  setInitTodo: Dispatch<React.SetStateAction<TodoTypes[]>>;
+  setInitTodo: Dispatch<React.SetStateAction<TodoProps[]>>;
 }
 const DeleteButton = ({ todoId, setInitTodo }: DeleteButtonProps) => {
   const localStorageManager = new LocalStorageManager();

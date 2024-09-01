@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { TodoTypes } from "../types/TodoTypes";
+import { TodoProps } from "../types/TodoProps";
 import { LocalStorageManager } from "../util/localStorageManager";
 import { getTodo } from "../api/api";
 
 export const useInitTodo = () => {
-  const [initTodo, setInitTodo] = useState<TodoTypes[]>([]);
+  const [initTodo, setInitTodo] = useState<TodoProps[]>([]);
 
   useEffect(() => {
     const localStorageManager = new LocalStorageManager();

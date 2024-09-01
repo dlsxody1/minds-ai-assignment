@@ -1,15 +1,15 @@
 import { styled } from "styled-components";
 import { TodoManager } from "../../util/TodoManager";
 import { LocalStorageManager } from "../../util/localStorageManager";
-import { TodoTypes } from "../../types/TodoTypes";
+import { TodoProps } from "../../types/TodoProps";
 import { Dispatch } from "react";
 
-interface CheckBoxTypes {
+interface CheckBoxProps {
   todoId: number;
-  setInitTodo: Dispatch<React.SetStateAction<TodoTypes[]>>;
+  setInitTodo: Dispatch<React.SetStateAction<TodoProps[]>>;
   completed: boolean;
 }
-const Checkbox = ({ todoId, setInitTodo, completed }: CheckBoxTypes) => {
+const Checkbox = ({ todoId, setInitTodo, completed }: CheckBoxProps) => {
   const todoManager = new TodoManager();
   const localStorageManager = new LocalStorageManager();
 

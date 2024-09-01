@@ -2,11 +2,11 @@ import { styled } from "styled-components";
 import { LocalStorageManager } from "../../util/localStorageManager";
 import { TodoManager } from "../../util/TodoManager";
 import { Dispatch } from "react";
-import { TodoTypes } from "../../types/TodoTypes";
+import { TodoProps } from "../../types/TodoProps";
 
 interface AddButtonProps {
   inputData: string;
-  setInitTodo: Dispatch<React.SetStateAction<TodoTypes[]>>;
+  setInitTodo: Dispatch<React.SetStateAction<TodoProps[]>>;
   setInputData: Dispatch<React.SetStateAction<string>>;
 }
 
@@ -22,7 +22,7 @@ const AddButton = ({
     setInitTodo((prevTodos) => {
       const newId =
         prevTodos.length > 0 ? prevTodos[prevTodos.length - 1].id + 1 : 1;
-      const newTodo: TodoTypes = {
+      const newTodo: TodoProps = {
         userId: 1,
         id: newId,
         title: inputData,

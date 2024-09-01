@@ -1,11 +1,11 @@
-import { TodoTypes } from "../types/TodoTypes";
+import { TodoProps } from "../types/TodoProps";
 import { LocalStorageManager } from "./localStorageManager";
 
 export class TodoManager {
   add(inputData: string, storage: LocalStorageManager) {
     const todos = storage.get("todo") || [];
     const newId = todos.length > 0 ? todos[todos.length - 1].id + 1 : 1;
-    const newTodo: TodoTypes = {
+    const newTodo: TodoProps = {
       userId: 1,
       id: newId,
       title: inputData,
@@ -17,7 +17,7 @@ export class TodoManager {
 
   complete(id: number, storage: LocalStorageManager) {
     const todos = storage.get("todo") || [];
-    const updatedTodos = todos.map((todo: TodoTypes) => {
+    const updatedTodos = todos.map((todo: TodoProps) => {
       if (todo.id === id) {
         return {
           ...todo,
@@ -32,7 +32,7 @@ export class TodoManager {
 
   delete(id: number, storage: LocalStorageManager) {
     const todos = storage.get("todo") || [];
-    const updatedTodos = todos.filter((todo: TodoTypes) => todo.id !== id);
+    const updatedTodos = todos.filter((todo: TodoProps) => todo.id !== id);
 
     storage.set("todo", updatedTodos);
   }

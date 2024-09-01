@@ -1,7 +1,7 @@
-import { TodoTypes } from "../types/TodoTypes";
+import { TodoProps } from "../types/TodoProps";
 
 export class LocalStorageManager {
-  set(key: string, value: TodoTypes[]) {
+  set(key: string, value: TodoProps[]) {
     try {
       const serializedValue = JSON.stringify(value);
       localStorage.setItem(key, serializedValue);

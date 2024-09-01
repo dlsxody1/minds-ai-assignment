@@ -2,12 +2,12 @@ import { styled } from "styled-components";
 import Checkbox from "../Input/Checkbox";
 import DeleteButton from "../Button/DeleteButton";
 import Task from "./Task";
-import { TodoTypes } from "../../types/TodoTypes";
+import { TodoProps } from "../../types/TodoProps";
 import { Dispatch } from "react";
 
 interface TaskContainerTypes {
-  initTodo: TodoTypes[];
-  setInitTodo: Dispatch<React.SetStateAction<TodoTypes[]>>;
+  initTodo: TodoProps[];
+  setInitTodo: Dispatch<React.SetStateAction<TodoProps[]>>;
 }
 
 const TaskContainer = ({ initTodo, setInitTodo }: TaskContainerTypes) => {

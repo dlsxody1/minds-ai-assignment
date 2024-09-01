@@ -2,12 +2,12 @@ import { styled } from "styled-components";
 import Input from "./Input";
 import AddButton from "../Button/AddButton";
 import { Dispatch, FormEvent, useState } from "react";
-import { TodoTypes } from "../../types/TodoTypes";
+import { TodoProps } from "../../types/TodoProps";
 
 const InputContainer = ({
   setInitTodo,
 }: {
-  setInitTodo: Dispatch<React.SetStateAction<TodoTypes[]>>;
+  setInitTodo: Dispatch<React.SetStateAction<TodoProps[]>>;
 }) => {
   const [inputData, setInputData] = useState("");
 
