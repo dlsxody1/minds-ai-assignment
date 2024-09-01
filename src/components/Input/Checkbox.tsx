@@ -1,25 +1,16 @@
 import { styled } from "styled-components";
-import { TodoManager } from "../../util/TodoManager";
 import { LocalStorageManager } from "../../util/localStorageManager";
-import { TodoProps } from "../../types/TodoProps";
-import { Dispatch } from "react";
 
 interface CheckBoxProps {
   todoId: number;
-  setInitTodo: Dispatch<React.SetStateAction<TodoProps[]>>;
+  completeTodo: (todoId: number, storage: LocalStorageManager) => void;
   completed: boolean;
 }
-const Checkbox = ({ todoId, setInitTodo, completed }: CheckBoxProps) => {
-  const todoManager = new TodoManager();
+const Checkbox = ({ todoId, completeTodo, completed }: CheckBoxProps) => {
   const localStorageManager = new LocalStorageManager();
 
   const handleChange = () => {
-    todoManager.complete(todoId, localStorageManager);
-    setInitTodo((prevTodos) =>
-      prevTodos.map((todo) =>
-        todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
+    completeTodo(todoId, localStorageManager);
   };
 
   return <CheckboxComponent onChange={handleChange} checked={completed} />;
