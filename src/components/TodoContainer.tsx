@@ -1,16 +1,20 @@
 import { styled } from "styled-components";
 import TaskContainer from "./Task/TaskContainer";
 import InputContainer from "./Input/InputContainer";
-import { useInitTodo } from "../hooks/useInitTodo";
+import { useTodo } from "../hooks/useTodo";
 
 const TodoContainer = () => {
-  const { initTodo, setInitTodo } = useInitTodo();
+  const { initTodo, addTodo, completeTodo, deleteTodo } = useTodo();
   return (
     <Container>
       <ToDoListContainer>
         <Title>To-Do List</Title>
-        <InputContainer setInitTodo={setInitTodo}></InputContainer>
-        <TaskContainer initTodo={initTodo} setInitTodo={setInitTodo} />
+        <InputContainer addTodo={addTodo}></InputContainer>
+        <TaskContainer
+          deleteTodo={deleteTodo}
+          completeTodo={completeTodo}
+          initTodo={initTodo}
+        />
       </ToDoListContainer>
     </Container>
   );

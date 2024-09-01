@@ -2,15 +2,21 @@ import { styled } from "styled-components";
 import Checkbox from "../Input/Checkbox";
 import DeleteButton from "../Button/DeleteButton";
 import Task from "./Task";
-import { TodoTypes } from "../../types/TodoTypes";
-import { Dispatch } from "react";
+import { TodoProps } from "../../types/TodoProps";
+
+import { LocalStorageManager } from "../../util/localStorageManager";
 
 interface TaskContainerTypes {
-  initTodo: TodoTypes[];
-  setInitTodo: Dispatch<React.SetStateAction<TodoTypes[]>>;
+  initTodo: TodoProps[];
+  completeTodo: (todoId: number, storage: LocalStorageManager) => void;
+  deleteTodo: (todoId: number, storage: LocalStorageManager) => void;
 }
 
-const TaskContainer = ({ initTodo, setInitTodo }: TaskContainerTypes) => {
+const TaskContainer = ({
+  initTodo,
+  completeTodo,
+  deleteTodo,
+}: TaskContainerTypes) => {
   return (
     <>
       <TaskContainerComponent>
@@ -19,10 +25,10 @@ const TaskContainer = ({ initTodo, setInitTodo }: TaskContainerTypes) => {
             <Checkbox
               todoId={id}
               completed={completed}
-              setInitTodo={setInitTodo}
+              completeTodo={completeTodo}
             />
             <Task completed={completed} title={title} />
-            <DeleteButton todoId={id} setInitTodo={setInitTodo} />
+            <DeleteButton todoId={id} deleteTodo={deleteTodo} />
           </TaskItem>
         ))}
       </TaskContainerComponent>
@@ -33,9 +39,16 @@ const TaskContainer = ({ initTodo, setInitTodo }: TaskContainerTypes) => {
 export default TaskContainer;
 
 const TaskContainerComponent = styled.div`
+  height: 450px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const TaskItem = styled.div`
