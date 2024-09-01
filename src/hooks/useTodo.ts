@@ -3,7 +3,7 @@ import { TodoProps } from "../types/TodoProps";
 import { LocalStorageManager } from "../util/localStorageManager";
 import { getTodo } from "../api/api";
 
-export const useInitTodo = () => {
+export const useTodo = () => {
   const [initTodo, setInitTodo] = useState<TodoProps[]>([]);
 
   useEffect(() => {
