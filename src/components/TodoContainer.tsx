@@ -4,16 +4,16 @@ import InputContainer from "./Input/InputContainer";
 import { useInitTodo } from "../hooks/useInitTodo";
 
 const TodoContainer = () => {
-  const { initTodo, setInitTodo, addTodo, completeTodo } = useInitTodo();
+  const { initTodo, addTodo, completeTodo, deleteTodo } = useInitTodo();
   return (
     <Container>
       <ToDoListContainer>
         <Title>To-Do List</Title>
         <InputContainer addTodo={addTodo}></InputContainer>
         <TaskContainer
+          deleteTodo={deleteTodo}
           completeTodo={completeTodo}
           initTodo={initTodo}
-          setInitTodo={setInitTodo}
         />
       </ToDoListContainer>
     </Container>

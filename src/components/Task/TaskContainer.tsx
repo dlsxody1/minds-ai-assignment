@@ -3,19 +3,19 @@ import Checkbox from "../Input/Checkbox";
 import DeleteButton from "../Button/DeleteButton";
 import Task from "./Task";
 import { TodoProps } from "../../types/TodoProps";
-import { Dispatch } from "react";
+
 import { LocalStorageManager } from "../../util/localStorageManager";
 
 interface TaskContainerTypes {
   initTodo: TodoProps[];
-  setInitTodo: Dispatch<React.SetStateAction<TodoProps[]>>;
   completeTodo: (todoId: number, storage: LocalStorageManager) => void;
+  deleteTodo: (todoId: number, storage: LocalStorageManager) => void;
 }
 
 const TaskContainer = ({
   initTodo,
-  setInitTodo,
   completeTodo,
+  deleteTodo,
 }: TaskContainerTypes) => {
   return (
     <>
@@ -28,7 +28,7 @@ const TaskContainer = ({
               completeTodo={completeTodo}
             />
             <Task completed={completed} title={title} />
-            <DeleteButton todoId={id} setInitTodo={setInitTodo} />
+            <DeleteButton todoId={id} deleteTodo={deleteTodo} />
           </TaskItem>
         ))}
       </TaskContainerComponent>

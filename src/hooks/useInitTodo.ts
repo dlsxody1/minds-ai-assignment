@@ -49,5 +49,12 @@ export const useInitTodo = () => {
     storage.set("todo", updatedTodos);
   };
 
-  return { initTodo, setInitTodo, addTodo, completeTodo };
+  const deleteTodo = (todoId: number, storage: LocalStorageManager) => {
+    const todos = storage.get("todo") || [];
+    const updatedTodos = todos.filter((todo: TodoProps) => todo.id !== todoId);
+    setInitTodo(updatedTodos);
+    storage.set("todo", updatedTodos);
+  };
+
+  return { initTodo, setInitTodo, addTodo, completeTodo, deleteTodo };
 };
