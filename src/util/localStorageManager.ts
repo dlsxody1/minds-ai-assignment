@@ -19,12 +19,4 @@ export class LocalStorageManager {
       return null;
     }
   }
-
-  delete(key: string) {
-    try {
-      localStorage.removeItem(key);
-    } catch (error) {
-      console.error(`로컬스토리지 삭제하는데 에러 발생 : ${error}`);
-    }
-  }
 }
