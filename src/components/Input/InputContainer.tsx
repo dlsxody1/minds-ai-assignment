@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import Input from "./Input";
 import AddButton from "../Button/AddButton";
-import { Dispatch, useState } from "react";
+import { Dispatch, FormEvent, useState } from "react";
 import { TodoTypes } from "../../types/TodoTypes";
 
 const InputContainer = ({
@@ -11,8 +11,12 @@ const InputContainer = ({
 }) => {
   const [inputData, setInputData] = useState("");
 
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
-    <InputContainerComponent onSubmit={(e) => e.preventDefault()}>
+    <InputContainerComponent onSubmit={(e) => onSubmit(e)}>
       <Input setInputData={setInputData} inputData={inputData} />
       <AddButton
         inputData={inputData}

@@ -33,9 +33,16 @@ const TaskContainer = ({ initTodo, setInitTodo }: TaskContainerTypes) => {
 export default TaskContainer;
 
 const TaskContainerComponent = styled.div`
+  height: 450px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const TaskItem = styled.div`

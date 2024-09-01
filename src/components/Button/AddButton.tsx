@@ -35,7 +35,7 @@ const AddButton = ({
   };
 
   return (
-    <AddButtonComponent onClick={() => addTodo()} type="button">
+    <AddButtonComponent onClick={() => addTodo()} type="submit">
       Add
     </AddButtonComponent>
   );
