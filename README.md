@@ -2,7 +2,7 @@
 
 ### 과제 링크
 
-추가 예정.
+https://mind-ai-assignment.netlify.app
 
 ### 요구사항
 
