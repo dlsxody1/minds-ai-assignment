@@ -25,8 +25,9 @@ export const useTodo = () => {
   const addTodo = (inputData: string, storage: LocalStorageManager) => {
     const todos = storage.get("todo") || [];
     const newId = todos.length > 0 ? todos[todos.length - 1].id + 1 : 1;
+    const userId = todos.length > 0 ? todos[0].userId : 1;
     const newTodo: TodoProps = {
-      userId: 1,
+      userId,
       id: newId,
       title: inputData,
       completed: false,
